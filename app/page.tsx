@@ -1,3 +1,4 @@
+import FeatureWithProduct from "@/components/feature-with-product";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
 import Stats from "@/components/stats";
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Stats />
+      <FeatureWithProduct />
     </main>
   );
 }
