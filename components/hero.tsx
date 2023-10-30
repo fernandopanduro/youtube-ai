@@ -33,7 +33,7 @@ export default function Example() {
                 <Link href={"/"}>Get Started</Link>
               </Button>
               <a
-                href="#"
+                href="#stats"
                 className="text-sm font-semibold leading-6 text-gray-900">
                 Learn more <span aria-hidden="true">→</span>
               </a>
