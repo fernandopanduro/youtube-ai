@@ -1,10 +1,11 @@
-import Header from "./components/header";
+import Header from "@/components/header";
+import Hero from "@/components/hero";
 
 export default function Home() {
   return (
     <main>
       <Header />
-      <h1 className="text-6xl text-center font-bold">Youtube IA</h1>
+      <Hero />
     </main>
   );
 }
