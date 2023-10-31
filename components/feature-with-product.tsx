@@ -7,7 +7,7 @@ const features = [
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
     icon: (
       <Youtube
-        className="absolute left-1 top-1 h-5 w-5 text-indigo-600"
+        className="absolute left-1 top-1 h-5 w-5 text-blue-500"
         aria-label="true"
       />
     ),
@@ -18,7 +18,7 @@ const features = [
       "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
     icon: (
       <Bot
-        className="absolute left-1 top-1 h-5 w-5 text-indigo-600"
+        className="absolute left-1 top-1 h-5 w-5 text-blue-500"
         aria-label="true"
       />
     ),
@@ -29,7 +29,7 @@ const features = [
       "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
     icon: (
       <LineChart
-        className="absolute left-1 top-1 h-5 w-5 text-indigo-600"
+        className="absolute left-1 top-1 h-5 w-5 text-blue-500"
         aria-label="true"
       />
     ),
@@ -38,7 +38,7 @@ const features = [
 
 export default function FeatureWithProduct() {
   return (
-    <div className="relative overflow-hidden isolate bg-white py-24 sm:py-32">
+    <div className="relative overflow-hidden isolate bg-transparent py-24 sm:py-32">
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true">
@@ -54,10 +54,10 @@ export default function FeatureWithProduct() {
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pr-8 lg:pt-4">
             <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold leading-7 text-indigo-600">
+              <h2 className="text-lg leading-8 font-bold text-blue-500">
                 Deploy faster
               </h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <p className="mt-2 font-bold mx-auto max-w-4xl font-display text-4xl tracking-normal text-slate-900 sm:text-6xl">
                 A better workflow
               </p>
               <p className="mt-6 text-lg leading-8 text-gray-600">

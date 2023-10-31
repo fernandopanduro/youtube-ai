@@ -11,47 +11,47 @@ const PriceBenefits = (props: Props) => {
           background:
             "linear-gradient(121.52deg, rgba(255, 255, 255, 0.25) -2.26%, rgba(234, 236, 240, 0) 100%)",
         }}></span>
-      <span className="absolute duration-200 inset-0 -z-10 rounded-[20px]  bg-white dark:bg-dark-1000 "></span>
+      <span className="absolute duration-200 inset-0 -z-10 rounded-[20px]  bg-transparent dark:bg-dark-1000 "></span>
       <div className="flex md:flex-row flex-col">
-        <h3 className="font-semibold text-3xl md:mb-0 mb-9 md:text-left text-center">
+        <h3 className="font-semibold text-3xl md:mb-0 mb-9 md:text-left text-center lg:pr-12">
           What's included
         </h3>
         <div className="md:border-l-2 border-[#DEDEDE] dark:md:border-dark-800 md:pl-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-14 gap-y-6 md:gap-y-10 mb-12 md:mb-14">
             <div className="flex items-center gap-6">
               <CheckCircle />
-              <p className="text-lg text-dark-600 dark:text-dark-300">
+              <p className="text-lg text-slate-700 leading-7 dark:text-dark-300">
                 Premium support by email
               </p>
             </div>
             <div className="flex items-center gap-6">
               <CheckCircle />
-              <p className="text-lg text-dark-600 dark:text-dark-300">
+              <p className="text-lg text-slate-700 leading-7 dark:text-dark-300">
                 Ability to request features
               </p>
             </div>
             <div className="flex items-center gap-6">
               <CheckCircle />
-              <p className="text-lg text-dark-600 dark:text-dark-300">
+              <p className="text-lg text-slate-700 leading-7 dark:text-dark-300">
                 Commercial usage of photos
               </p>
             </div>
             <div className="flex items-center gap-6">
               <CheckCircle />
-              <p className="text-lg text-dark-600 dark:text-dark-300">
+              <p className="text-lg text-slate-700 leading-7 dark:text-dark-300">
                 Early access to new features
               </p>
             </div>
             <div className="flex items-center gap-6">
               <CheckCircle />
-              <p className="text-lg text-dark-600 dark:text-dark-300">
-                Coming Soon: Save your rooms in a dashboard
+              <p className="text-lg text-slate-700 leading-7 dark:text-dark-300">
+                Save your rooms in a dashboard
               </p>
             </div>
             <div className="flex items-center gap-6">
               <CheckCircle />
-              <p className="text-lg text-dark-600 dark:text-dark-300">
-                Coming Soon: Premium room types and styles
+              <p className="text-lg text-slate-700 leading-7 dark:text-dark-300">
+                Premium room types and styles
               </p>
             </div>
           </div>
