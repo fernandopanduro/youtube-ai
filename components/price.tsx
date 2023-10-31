@@ -13,7 +13,7 @@ type Props = {
 const Price = ({ title, description, price, tokens, isPopular }: Props) => {
   return (
     <div
-      className={`w-64 p-4 shadow-lg rounded-2xl dark:bg-gray-800 card ${
+      className={`flex items-center justify-center flex-col text-center color-white w-64 p-4 shadow-lg rounded-2xl dark:bg-gray-800 card hover:scale-[1.2] ${
         isPopular ? "bg-blue-200" : "bg-white"
       }`}>
       <p className="mb-4 text-xl font-medium text-gray-800 dark:text-gray-50">

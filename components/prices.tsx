@@ -45,7 +45,7 @@ const Prices = (props: Props) => {
           thousands of happy customers by buying more below.
         </p>
       </main>
-      <div className="cards">
+      <div className="cards flex flex-col md:flex-row justify-center items-center gap-5 pb-10">
         {prices.map((price, index) => (
           <Price
             key={index}

@@ -1,38 +1,9 @@
-.cards {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-.cards .red {
-  background-color: #007e9e;
-}
-
 .cards .card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
   transition: 400ms;
-}
-
-.cards .card p.tip {
-  font-size: 1em;
-  font-weight: 700;
-}
-
-.cards .card p.second-text {
-  font-size: 0.7em;
-}
-
-.cards .card:hover {
-  transform: scale(1.2, 1.2);
+  -webkit-transition: 400ms;
+  -moz-transition: 400ms;
+  -ms-transition: 400ms;
+  -o-transition: 400ms;
 }
 
 .cards:hover > .card:not(:hover) {
