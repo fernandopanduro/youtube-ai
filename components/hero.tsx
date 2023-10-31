@@ -34,7 +34,7 @@ export default function Example() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button type="button">
-                <Link href={"/"}>Get Started</Link>
+                <Link href={"/youtube"}>Get Started</Link>
               </Button>
               <a
                 href="#stats"

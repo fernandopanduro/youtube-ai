@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Logo from "./logo";
 import { Button } from "./ui/button";
@@ -20,7 +21,12 @@ const Header = (props: Props) => {
               <Link href={"/youtube"}>Youtube AI</Link>
             </li>
             <li>
-              <Button>Login</Button>
+              <Button>
+                <Link href={"/sign-in"}>Login</Link>
+              </Button>
+            </li>
+            <li>
+              <UserButton afterSignOutUrl="/" />
             </li>
           </ul>
         </nav>
