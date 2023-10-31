@@ -20,6 +20,10 @@ export default function Example() {
         </div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
+            <p className="border rounded-2xl py-1 px-4 text-slate-500 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out w-fit mx-auto">
+              Used by over <span className="font-semibold">270,000</span> happy
+              users
+            </p>
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
               Youtube AI
             </h1>
