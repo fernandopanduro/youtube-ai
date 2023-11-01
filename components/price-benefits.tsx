@@ -14,7 +14,7 @@ const PriceBenefits = (props: Props) => {
       <span className="absolute duration-200 inset-0 -z-10 rounded-[20px]  bg-transparent dark:bg-dark-1000 "></span>
       <div className="flex md:flex-row flex-col">
         <h3 className="font-semibold text-3xl md:mb-0 mb-9 md:text-left text-center lg:pr-12">
-          What's included
+          What&apos;s included
         </h3>
         <div className="md:border-l-2 border-[#DEDEDE] dark:md:border-dark-800 md:pl-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-14 gap-y-6 md:gap-y-10 mb-12 md:mb-14">
