@@ -8,14 +8,16 @@ export async function POST(req: Request) {
   try {
     const { user } = auth();
 
-    if (!user) {
+    if (user) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const propmt = await req.json();
+    const body = await req.json();
+    const { topic, keywords, description, stylePrimary, styleSecondary } = body;
+    console.log(body);
     const image = await openai.images.generate({
-      prompt: propmt,
-      n: 1,
+      prompt: `${stylePrimary}  de alta calidad de la ${topic}. El fondo de la imagen debe de ser o estar una nebulosa. El personaje o cosa principal debe de ser ${description}, Debe ser un ${styleSecondary}. Las pabras claves de la imagen son ${keywords}`,
+      n: 3,
       size: "512x512",
     });
 
