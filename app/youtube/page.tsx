@@ -9,6 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
+import { useCompletion } from "ai/react";
+
 import {
   Select,
   SelectContent,
@@ -28,6 +30,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
+
+export const runtime = "edge";
 
 const FormSchema = z.object({
   topic: z.string().min(2, {
@@ -49,7 +53,21 @@ const FormSchema = z.object({
 
 export default function Chat() {
   const [url, setUrl] = useState<[{ url: string }]>([{ url: "" }]);
+  const [titles, setTitles] = useState();
+  const [description, setDescription] = useState();
+  const [hashtags, setHashtags] = useState();
   const [loading, setLoading] = useState(false);
+
+  const {
+    completion,
+    input,
+    stop,
+    isLoading,
+    handleInputChange,
+    handleSubmit,
+  } = useCompletion({
+    api: "/api/completions/title",
+  });
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -62,11 +80,7 @@ export default function Chat() {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    setLoading(true);
-    toast({
-      title: "Generating Thumbnails.",
-    });
+  const getImages = (data: z.infer<typeof FormSchema>) => {
     fetch("/api/completions/image", {
       method: "POST",
       body: JSON.stringify(data),
@@ -92,6 +106,98 @@ export default function Chat() {
           description: "There was a problem with your request.",
         });
       });
+  };
+
+  const getTitles = (data: z.infer<typeof FormSchema>) => {
+    fetch("/api/completions/title", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.text();
+      })
+      .then(res => {
+        console.log(res);
+        setTitles(res);
+        toast({
+          title: "Generated Titles.",
+        });
+      })
+      .catch(error => {
+        console.log("Catch Error:", error);
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        });
+      });
+  };
+
+  const getDescription = (data: z.infer<typeof FormSchema>) => {
+    fetch("/api/completions/description", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.text();
+      })
+      .then(res => {
+        console.log(res);
+        setDescription(res);
+        toast({
+          title: "Generated Description.",
+        });
+      })
+      .catch(error => {
+        console.log("Catch Error:", error);
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        });
+      });
+  };
+
+  const getHashtags = (data: z.infer<typeof FormSchema>) => {
+    fetch("/api/completions/hashtags", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.text();
+      })
+      .then(res => {
+        console.log(res);
+        setHashtags(res);
+        toast({
+          title: "Generated Hashtags.",
+        });
+      })
+      .catch(error => {
+        console.log("Catch Error:", error);
+        toast({
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        });
+      });
+  };
+
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+    setLoading(true);
+    toast({
+      title: "Generating.",
+    });
+    getImages(data);
+    getDescription(data);
+    getTitles(data);
+    getHashtags(data);
   };
 
   return (
@@ -125,7 +231,10 @@ export default function Chat() {
                   <FormItem className="grow">
                     <FormLabel>What are a keywords of your video?</FormLabel>
                     <FormControl>
-                      <Input placeholder="Computer, Frontend, Backend" {...field} />
+                      <Input
+                        placeholder="Computer, Frontend, Backend"
+                        {...field}
+                      />
                     </FormControl>
 
                     <FormMessage />
@@ -141,7 +250,10 @@ export default function Chat() {
                       What is a description global of your video?
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="This a video about is..." {...field} />
+                      <Input
+                        placeholder="This a video about is..."
+                        {...field}
+                      />
                     </FormControl>
 
                     <FormMessage />
@@ -211,40 +323,68 @@ export default function Chat() {
           </form>
         </Form>
 
-        {url.length !== 1 && (
-          <ul className="flex flex-col md:flex-row gap-4 max-w-6xl">
-            {url.map((e, i) => (
-              <li
-                key={i}
-                className="flex flex-col items-center justify-center gap-2">
-                <img
-                  src={e.url}
-                  alt=""
-                  className="w-96 h-96 object-cover aspect-square"
-                />
-                <Button>
-                  <a href={e.url} download>
-                    Download
-                  </a>
-                </Button>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {url.length === 1 && (
-          <div className="flex flex-col md:flex-row gap-4 max-w-6xl">
-            <div className="border-2 border-red-300/70 rounded-lg border-dashed">
-              <div className={`loader ${loading ? "loaderActive" : ""}`}></div>
-            </div>
-            <div className="border-2 border-red-300/70 rounded-lg border-dashed">
-              <div className={`loader ${loading ? "loaderActive" : ""}`}></div>
-            </div>
-            <div className="border-2 border-red-300/70 rounded-lg border-dashed">
-              <div className={`loader ${loading ? "loaderActive" : ""}`}></div>
-            </div>
+        <div className="max-w-6xl w-full">
+          <h2 className="w-full mb-6 font-bold text-2xl">Titles</h2>
+          <div className="w-full border-2 border-red-300/70 rounded-lg border-dashed p-4">
+            {titles}
           </div>
-        )}
+        </div>
+
+        <div className="max-w-6xl w-full">
+          <h2 className="w-full mb-6 font-bold text-2xl">Description</h2>
+          <div className="w-full border-2 border-red-300/70 rounded-lg border-dashed p-4">
+            {description}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="w-full mb-6 font-bold text-2xl">Images</h2>
+
+          {url.length !== 1 && (
+            <ul className="flex flex-col md:flex-row gap-4 max-w-6xl">
+              {url.map((e, i) => (
+                <li
+                  key={i}
+                  className="flex flex-col items-center justify-center gap-2">
+                  <img
+                    src={e.url}
+                    alt=""
+                    className="w-80 h-80 object-cover aspect-square"
+                  />
+                  <Button>
+                    <a href={e.url} download>
+                      Download
+                    </a>
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {url.length === 1 && (
+            <div className="flex flex-col md:flex-row gap-4 max-w-6xl">
+              <div className="border-2 border-red-300/70 rounded-lg border-dashed">
+                <div
+                  className={`loader ${loading ? "loaderActive" : ""}`}></div>
+              </div>
+              <div className="border-2 border-red-300/70 rounded-lg border-dashed">
+                <div
+                  className={`loader ${loading ? "loaderActive" : ""}`}></div>
+              </div>
+              <div className="border-2 border-red-300/70 rounded-lg border-dashed">
+                <div
+                  className={`loader ${loading ? "loaderActive" : ""}`}></div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="max-w-6xl w-full">
+          <h2 className="w-full mb-6 font-bold text-2xl">Hashtags</h2>
+          <div className="w-full border-2 border-red-300/70 rounded-lg border-dashed p-4">
+            {hashtags}
+          </div>
+        </div>
       </div>
     </>
   );

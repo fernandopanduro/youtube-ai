@@ -14,7 +14,6 @@ export async function POST(req: Request) {
 
     const body = await req.json();
     const { topic, keywords, description, stylePrimary, styleSecondary } = body;
-    console.log(body);
     const image = await openai.images.generate({
       prompt: `${stylePrimary}  de alta calidad de la ${topic}. El fondo de la imagen debe de ser o estar una nebulosa. El personaje o cosa principal debe de ser ${description}, Debe ser un ${styleSecondary}. Las pabras claves de la imagen son ${keywords}`,
       n: 3,

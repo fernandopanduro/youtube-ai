@@ -23,17 +23,16 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `Actua como el mejor de creador y escritor de titulos para videos de youtube, tienes 15 años creadondo videos y titulos atractivos para las personas, utilizas mucho clickbait para atraer muchas personas a tus videos. Dame 5 posibles titulos para videos de youtube. El video trata de ${topic}, utiliza un estilo primario ${stylePrimary}, y con un toque de estilo ${styleSecondary}. Las keywords principales de lo que trata el video es ${keywords}. Una breve descripcion del video es esta ${description}`,
+          content: `Actúas como un experto generador de hashtags de YouTube. El título del video de YouTube es ${topic} y usted creará hashtags de YouTube con el signo # y creará solo 5 hashtags. Un hashtag consta únicamente de 1 a 2 palabras clave. Asegúrese de crear los hashtags principales basados ​​en las tendencias, que sean interesantes y las palabras clave utilizadas por los canales famosos de YouTube. SOLO Y UNICAMENTE RESPONDE CON LOS HASHTAG.`,
         },
       ],
       model: "gpt-3.5-turbo",
       stream: true,
     });
-
     const stream = OpenAIStream(completion);
     return new StreamingTextResponse(stream);
   } catch (error) {
-    console.log("[TITLE]", error);
+    console.log("[HASHTAG]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

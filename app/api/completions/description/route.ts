@@ -23,17 +23,18 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `Actua como el mejor de creador y escritor de titulos para videos de youtube, tienes 15 años creadondo videos y titulos atractivos para las personas, utilizas mucho clickbait para atraer muchas personas a tus videos. Dame 5 posibles titulos para videos de youtube. El video trata de ${topic}, utiliza un estilo primario ${stylePrimary}, y con un toque de estilo ${styleSecondary}. Las keywords principales de lo que trata el video es ${keywords}. Una breve descripcion del video es esta ${description}`,
+          content:
+            `
+            Escribe una descripcion atractiva para mi video de youtube. El tema principal del video es sobre ${topic}, las palabras claves son ${keywords}.Este es eel contexto del video. Crea un descripcion atractiva que describa el video, y que sea atractiva.`,
         },
       ],
       model: "gpt-3.5-turbo",
       stream: true,
     });
-
     const stream = OpenAIStream(completion);
     return new StreamingTextResponse(stream);
   } catch (error) {
-    console.log("[TITLE]", error);
+    console.log("[DESCRIPTIONhandleInputChange]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
