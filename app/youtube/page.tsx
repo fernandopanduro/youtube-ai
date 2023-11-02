@@ -31,8 +31,6 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
-export const runtime = "edge";
-
 const FormSchema = z.object({
   topic: z.string().min(2, {
     message: "Topic must be at least 2 characters.",
