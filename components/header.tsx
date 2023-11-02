@@ -1,6 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Logo from "./logo";
+import { ToggleTheme } from "./toggle-theme";
 import { Button } from "./ui/button";
 
 type Props = {};
@@ -14,6 +15,9 @@ const Header = (props: Props) => {
         </Link>
         <nav>
           <ul className="flex items-center gap-4">
+            <li>
+              <ToggleTheme />
+            </li>
             <li>
               <Link href={"/"}>Home</Link>
             </li>
