@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     });
     /* const stream = OpenAIStream(completion);
     return new StreamingTextResponse(stream); */
-    return NextResponse.json(completion);
+    return NextResponse.json(completion.choices[0].message.content);
   } catch (error) {
     console.log("[DESCRIPTIONhandleInputChange]", error);
     return new NextResponse("Internal Error", { status: 500 });
