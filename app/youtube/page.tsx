@@ -9,8 +9,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { useCompletion } from "ai/react";
-
 import {
   Select,
   SelectContent,
@@ -55,17 +53,6 @@ export default function Chat() {
   const [description, setDescription] = useState();
   const [hashtags, setHashtags] = useState();
   const [loading, setLoading] = useState(false);
-
-  const {
-    completion,
-    input,
-    stop,
-    isLoading,
-    handleInputChange,
-    handleSubmit,
-  } = useCompletion({
-    api: "/api/completions/title",
-  });
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
