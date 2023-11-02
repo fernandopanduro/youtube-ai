@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { NextResponse } from "next/server";
+/* import { OpenAIStream, StreamingTextResponse } from "ai";
+ */ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -23,16 +23,16 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content:
-            `
+          content: `
             Escribe una descripcion atractiva para mi video de youtube. El tema principal del video es sobre ${topic}, las palabras claves son ${keywords}.Este es eel contexto del video. Crea un descripcion atractiva que describa el video, y que sea atractiva.`,
         },
       ],
       model: "gpt-3.5-turbo",
-      stream: true,
+      /*  stream: true, */
     });
-    const stream = OpenAIStream(completion);
-    return new StreamingTextResponse(stream);
+    /* const stream = OpenAIStream(completion);
+    return new StreamingTextResponse(stream); */
+    return NextResponse.json(completion);
   } catch (error) {
     console.log("[DESCRIPTIONhandleInputChange]", error);
     return new NextResponse("Internal Error", { status: 500 });

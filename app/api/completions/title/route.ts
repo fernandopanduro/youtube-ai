@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs";
-import { OpenAIStream, StreamingTextResponse } from "ai";
-import { NextResponse } from "next/server";
+/* import { OpenAIStream, StreamingTextResponse } from "ai";
+ */ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
 const openai = new OpenAI();
@@ -27,11 +27,12 @@ export async function POST(req: Request) {
         },
       ],
       model: "gpt-3.5-turbo",
-      stream: true,
+      /* stream: true, */
     });
 
-    const stream = OpenAIStream(completion);
-    return new StreamingTextResponse(stream);
+    /* const stream = OpenAIStream(completion);
+    return new StreamingTextResponse(stream); */
+    return NextResponse.json(completion);
   } catch (error) {
     console.log("[TITLE]", error);
     return new NextResponse("Internal Error", { status: 500 });

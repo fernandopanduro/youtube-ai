@@ -117,7 +117,7 @@ export default function Chat() {
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
-        return res.text();
+        return res.json();
       })
       .then(res => {
         console.log(res);
@@ -144,7 +144,7 @@ export default function Chat() {
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
-        return res.text();
+        return res.json();
       })
       .then(res => {
         console.log(res);
@@ -171,7 +171,7 @@ export default function Chat() {
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
-        return res.text();
+        return res.json();
       })
       .then(res => {
         console.log(res);
