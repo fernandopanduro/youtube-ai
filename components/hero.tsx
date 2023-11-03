@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { Button } from "./ui/button";
 
 export default function Example() {
@@ -53,7 +52,11 @@ export default function Example() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2, delay: 0.5 }}>
                 <Button type="button">
-                  <Link href={"/youtube"}>Get Started</Link>
+                  <a
+                    target="_blanck"
+                    href={"https://youtube-ai.ck.page/396aedec66"}>
+                    Get Started
+                  </a>
                 </Button>
               </motion.div>
               {/* <a

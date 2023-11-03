@@ -19,7 +19,10 @@ const Header = (props: Props) => {
             </li>
             <li>
               <Button>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://youtube-ai.ck.page/396aedec66"
+                  target="_blank"
+                  rel="noopener noreferrer">
                   Get Access
                 </a>
               </Button>
