@@ -8,7 +8,7 @@ type Props = {};
 const Header = (props: Props) => {
   return (
     <header className="w-full px-6 py-3 lg:px-8 fixed top-0 left-0 z-50 backdrop-blur-md border-b border-zinc-200/50">
-      <div className="mx-auto max-w-7xl flex items-center justify-between">
+      <div className="mx-auto max-w-6xl flex items-center justify-between">
         <Link href={"/"}>
           <Logo />
         </Link>

@@ -10,14 +10,6 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import {
   Form,
   FormControl,
   FormField,
@@ -179,7 +171,7 @@ export default function Chat() {
     toast({
       title: "Generating.",
     });
-    getImages(data);
+    /* getImages(data); */
     getDescription(data);
     getTitles(data);
     getHashtags(data);
@@ -187,8 +179,12 @@ export default function Chat() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col justify-center items-center gap-8 mt-20 px-6">
+      <div className="min-h-screen flex flex-col justify-center items-center gap-8 mt-10 px-6 pb-10">
         <Header />
+
+        <h1 className="text-left text-4xl font-bold max-w-6xl w-full">
+          Generator Youtube
+        </h1>
 
         <Form {...form}>
           <form
@@ -246,7 +242,7 @@ export default function Chat() {
                 )}
               />
             </div>
-            <div className="flex flex-col md:flex-row gap-5 justify-between">
+            {/* <div className="flex flex-col md:flex-row gap-5 justify-between">
               <FormField
                 control={form.control}
                 name="stylePrimary"
@@ -298,7 +294,7 @@ export default function Chat() {
                   </FormItem>
                 )}
               />
-            </div>
+            </div> */}
             <div>
               <Button type="submit" disabled={loading}>
                 Submit{" "}
@@ -322,7 +318,7 @@ export default function Chat() {
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <h2 className="w-full mb-6 font-bold text-2xl">Images</h2>
 
           {url.length !== 1 && (
@@ -362,7 +358,7 @@ export default function Chat() {
               </div>
             </div>
           )}
-        </div>
+        </div> */}
 
         <div className="max-w-6xl w-full">
           <h2 className="w-full mb-6 font-bold text-2xl">Hashtags</h2>
