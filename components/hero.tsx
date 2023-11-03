@@ -32,7 +32,7 @@ export default function Example() {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2, delay: 0.1 }}>
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+              <h1 className="text-4xl font-bold tracking-tight  sm:text-6xl bg-gradient-to-r from-orange-300 via-orange-600 to-orange-400 inline-block text-transparent bg-clip-text">
                 Youtube AI
               </h1>
             </motion.div>
@@ -40,7 +40,7 @@ export default function Example() {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}>
-              <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white/50">
+              <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
                 Supercharge your videos with AI-crafted thumbnails, enhancing
                 viewer attraction and boosting video views. Harness the
                 potential of AI-driven visuals for a content strategy upgrade.

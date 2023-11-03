@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Bot, LineChart, Youtube } from "lucide-react";
+import Image from "next/image";
+import screenshot from "../public/img/sreenshot.png";
 
 const features = [
   {
@@ -10,7 +12,7 @@ const features = [
       "Craft futuristic visuals instantly! Our AI-driven thumbnails are designed for rapid creation and feature fantastic designs that set you apart",
     icon: (
       <Youtube
-        className="absolute left-1 top-1 h-5 w-5 text-blue-500"
+        className="absolute left-1 top-1 h-5 w-5 text-orange-500"
         aria-label="true"
       />
     ),
@@ -21,7 +23,7 @@ const features = [
       "Craft visuals that are not just eye-catching but ahead of their time. Stay ahead of the curve in visual content.",
     icon: (
       <Bot
-        className="absolute left-1 top-1 h-5 w-5 text-blue-500"
+        className="absolute left-1 top-1 h-5 w-5 text-orange-500"
         aria-label="true"
       />
     ),
@@ -32,7 +34,7 @@ const features = [
       "Generate stunning thumbnails in seconds with AI-powered design.",
     icon: (
       <LineChart
-        className="absolute left-1 top-1 h-5 w-5 text-blue-500"
+        className="absolute left-1 top-1 h-5 w-5 text-orange-500"
         aria-label="true"
       />
     ),
@@ -61,7 +63,7 @@ export default function FeatureWithProduct() {
                 initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}>
-                <h2 className="text-lg leading-8 font-bold text-blue-500">
+                <h2 className="text-lg leading-8 font-bold text-orange-500">
                   Create faster
                 </h2>
               </motion.div>
@@ -106,9 +108,9 @@ export default function FeatureWithProduct() {
             initial={{ opacity: 0, x: 500 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}>
-            <img
-              src="https://cdn.openai.com/labs/images/A%20synthwave%20style%20sunset%20above%20the%20reflecting%20water%20of%20the%20sea,%20digital%20art.webp?v=1"
-              alt="Product dalle"
+            <Image
+              src={screenshot}
+              alt="Screenshot"
               className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0 aspect-video object-cover"
               width={2432}
               height={1442}

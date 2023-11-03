@@ -20,7 +20,7 @@ export default function Stats() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}>
               <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-                <dt className="text-base leading-7 text-gray-600 dark:text-white/70">
+                <dt className="text-base leading-7 text-gray-600 dark:text-orange-500">
                   {stat.name}
                 </dt>
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl dark:text-white">
