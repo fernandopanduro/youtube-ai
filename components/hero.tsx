@@ -1,11 +1,12 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
 export default function Example() {
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-transparent">
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -20,27 +21,46 @@ export default function Example() {
         </div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="text-center">
-            <p className="border rounded-2xl py-1 px-4 text-slate-500 text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out w-fit mx-auto">
-              Used by over <span className="font-semibold">270,000</span> happy
-              users
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Youtube AI
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Supercharge your videos with AI-crafted thumbnails, enhancing
-              viewer attraction and boosting video views. Harness the potential
-              of AI-driven visuals for a content strategy upgrade.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2 }}>
+              <p className="border rounded-2xl py-1 px-4 text-slate-500 dark:text-white text-sm mb-5 hover:scale-105 transition duration-300 ease-in-out w-fit mx-auto">
+                <span className="font-semibold">36,100</span> Happy Users
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2, delay: 0.1 }}>
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+                Youtube AI
+              </h1>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.2 }}>
+              <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white/50">
+                Supercharge your videos with AI-crafted thumbnails, enhancing
+                viewer attraction and boosting video views. Harness the
+                potential of AI-driven visuals for a content strategy upgrade.
+              </p>
+            </motion.div>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button type="button">
-                <Link href={"/youtube"}>Get Started</Link>
-              </Button>
-              <a
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2, delay: 0.5 }}>
+                <Button type="button">
+                  <Link href={"/youtube"}>Get Started</Link>
+                </Button>
+              </motion.div>
+              {/* <a
                 href="#stats"
-                className="text-sm font-semibold leading-6 text-gray-900">
+                className="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
                 View more <span aria-hidden="true">→</span>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

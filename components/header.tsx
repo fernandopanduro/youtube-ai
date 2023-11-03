@@ -1,4 +1,3 @@
-import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Logo from "./logo";
 import { ToggleTheme } from "./toggle-theme";
@@ -8,7 +7,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="w-full px-6 py-3 lg:px-8 fixed top-0 left-0 z-50 backdrop-blur-md border-b border-zinc-200">
+    <header className="w-full px-6 py-3 lg:px-8 fixed top-0 left-0 z-50 backdrop-blur-md border-b border-zinc-200/50">
       <div className="mx-auto max-w-7xl flex items-center justify-between">
         <Link href={"/"}>
           <Logo />
@@ -19,6 +18,13 @@ const Header = (props: Props) => {
               <ToggleTheme />
             </li>
             <li>
+              <Button>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                  Get Access
+                </a>
+              </Button>
+            </li>
+            {/* <li>
               <Link href={"/"}>Home</Link>
             </li>
             <li>
@@ -31,7 +37,7 @@ const Header = (props: Props) => {
             </li>
             <li>
               <UserButton afterSignOutUrl="/" />
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>
