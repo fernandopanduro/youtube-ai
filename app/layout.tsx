@@ -10,8 +10,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Youtube IA",
-  description: "Generate Youtube title and thumbnails",
+  title: "We enhance your YouTube videos with AI.",
+  description:
+    "Boost your success on YouTube with high-quality metadata thanks to our artificial intelligence. Save time and effortlessly attract your audience in each video.",
 };
 
 export default function RootLayout({
