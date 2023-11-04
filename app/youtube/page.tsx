@@ -18,6 +18,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
 import { Loader2 } from "lucide-react";
 
@@ -31,6 +38,15 @@ const FormSchema = z.object({
   description: z.string().min(2, {
     message: "Topic must be at least 2 characters.",
   }),
+  nameChannel: z.string().min(2, {
+    message: "Topic must be at least 2 characters.",
+  }),
+  styleText: z.string().min(2, {
+    message: "Select a style",
+  }),
+  /* creativityLevel: z.string().min(2, {
+    message: "Topic must be at least 2 characters.",
+  }), */
   /* stylePrimary: z.string().min(2, {
     message: "Select a style.",
   }),
@@ -52,6 +68,9 @@ export default function Chat() {
       topic: "",
       keywords: "",
       description: "",
+      nameChannel: "",
+      styleText: "",
+      /* creativityLevel: "", */
       /* stylePrimary: "",
       styleSecondary: "", */
     },
@@ -187,7 +206,7 @@ export default function Chat() {
         <Header />
 
         <h1 className="text-left text-4xl font-bold max-w-6xl w-full">
-          Generator Youtube
+          Video Metadata Generator
         </h1>
 
         <Form {...form}>
@@ -211,6 +230,67 @@ export default function Chat() {
               />
               <FormField
                 control={form.control}
+                name="styleText"
+                render={({ field }) => (
+                  <FormItem className="grow">
+                    <FormLabel>Style of Video</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a style of video" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Formal">Formal</SelectItem>
+                        <SelectItem value="Funny">Funny</SelectItem>
+                        <SelectItem value="Shitposter">Shitposter</SelectItem>
+                        <SelectItem value="Colloquial">Colloquial</SelectItem>
+                        <SelectItem value="Persuasive">Persuasive</SelectItem>
+                        <SelectItem value="Informative">Informative</SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="nameChannel"
+                render={({ field }) => (
+                  <FormItem className="grow">
+                    <FormLabel>What is a name of your channel?</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Mr Beast..." {...field} />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="flex flex-col md:flex-row gap-5 justify-between">
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem className="grow">
+                    <FormLabel>what is your video globally about?</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="This a video about is..."
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="keywords"
                 render={({ field }) => (
                   <FormItem className="grow">
@@ -226,25 +306,33 @@ export default function Chat() {
                   </FormItem>
                 )}
               />
-              <FormField
+              {/* <FormField
                 control={form.control}
-                name="description"
+                name="creativityLevel"
                 render={({ field }) => (
                   <FormItem className="grow">
-                    <FormLabel>
-                      What is a description global of your video?
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="This a video about is..."
-                        {...field}
-                      />
-                    </FormControl>
+                    <FormLabel>Creativity</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a style of thumbnails" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Hyper">Hyper</SelectItem>
+                        <SelectItem value="Super">Super</SelectItem>
+                        <SelectItem value="Mega">Mega</SelectItem>
+                        <SelectItem value="Normal">Normal</SelectItem>
+                        <SelectItem value="Little">Little</SelectItem>
+                      </SelectContent>
+                    </Select>
 
                     <FormMessage />
                   </FormItem>
                 )}
-              />
+              /> */}
             </div>
             {/* <div className="flex flex-col md:flex-row gap-5 justify-between">
               <FormField
@@ -301,7 +389,7 @@ export default function Chat() {
             </div> */}
             <div>
               <Button type="submit" disabled={loading}>
-                Submit{" "}
+                {loading ? "Generating" : "Submit"}
                 {loading && <Loader2 className="h-4 w-4 ml-2 animate-spin" />}
               </Button>
             </div>
@@ -311,14 +399,14 @@ export default function Chat() {
         <div className="max-w-6xl w-full">
           <h2 className="w-full mb-6 font-bold text-2xl">Titles</h2>
           <div className="w-full border-2 border-red-300/70 rounded-lg border-dashed p-4">
-            {titles}
+            <pre className="whitespace-pre-wrap break-words">{titles}</pre>
           </div>
         </div>
 
         <div className="max-w-6xl w-full">
           <h2 className="w-full mb-6 font-bold text-2xl">Description</h2>
           <div className="w-full border-2 border-red-300/70 rounded-lg border-dashed p-4">
-            {description}
+            <pre className="whitespace-pre-wrap break-words">{description}</pre>
           </div>
         </div>
 
@@ -367,7 +455,7 @@ export default function Chat() {
         <div className="max-w-6xl w-full">
           <h2 className="w-full mb-6 font-bold text-2xl">Hashtags</h2>
           <div className="w-full border-2 border-red-300/70 rounded-lg border-dashed p-4">
-            {hashtags}
+            <pre className="whitespace-pre-wrap break-words">{hashtags}</pre>
           </div>
         </div>
       </div>

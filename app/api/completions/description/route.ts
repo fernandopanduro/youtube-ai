@@ -17,17 +17,18 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const { topic, keywords, description, stylePrimary, styleSecondary } = body;
+    const { topic, keywords, description, styleText, nameChannel } = body;
 
     const completion = await openai.chat.completions.create({
       messages: [
         {
           role: "system",
           content: `
-            Escribe una descripcion atractiva para mi video de youtube. El tema principal del video es sobre ${topic}, las palabras claves son ${keywords}.Este es eel contexto del video. Crea un descripcion atractiva que describa el video, y que sea atractiva.`,
+            Act as the best persuasive and descriptive text writer for youtube videos. Write a persuasive and captivating description for my next youtube video. The central topic of this video is "${topic}", and the keywords are "${keywords}". The video description is based on the following context: "${description}". The writing style I want you to use is "${styleText}" to make sure the description fits the tone and theme of the video. Please note that my channel name is "${nameChannel}". Please provide a description that is compelling and engaging to viewers, and make sure it reflects the essence and value of the content provided in the video. Use emojis to be the most pleasant description. Use storytelling to guide the viewer and get them to subscribe. Use a maximum of 200 characters. Only and only respond with the description. Do not use hashtags"`,
         },
       ],
       model: "gpt-3.5-turbo",
+      /* temperature: 2, */
       /*  stream: true, */
     });
     /* const stream = OpenAIStream(completion);

@@ -17,13 +17,13 @@ export async function POST(req: Request) {
 
     const body = await req.json();
 
-    const { topic, keywords, description, stylePrimary, styleSecondary } = body;
+    const { topic, keywords, description, styleText, nameChannel } = body;
 
     const completion = await openai.chat.completions.create({
       messages: [
         {
           role: "system",
-          content: `Actua como el mejor de creador y escritor de titulos para videos de youtube, tienes 15 años creadondo videos y titulos atractivos para las personas, utilizas mucho clickbait para atraer muchas personas a tus videos. Dame 5 posibles titulos para videos de youtube. El video trata de ${topic}, utiliza un estilo primario es gracioso, y con un toque de estilo epico. Las keywords principales de lo que trata el video es ${keywords}. Una breve descripcion del video es esta ${description}`,
+          content: `Act as an exceptional YouTube video title creator and writer with over 15 years of experience in creating engaging titles. Your approach includes effective use of clickbait to attract a wide audience. Please provide 5 possible titles for YouTube videos. The videos are centered around the theme of "${topic}" and have a main style that combines humor with an epic twist. The writing style I want you to use is "${styleText}" to ensure the title fits the tone and theme of the video Keywords for the content are "${keywords}". A brief description of the video follows: "${description}". Use emojis to make it more personable. Make sure the titles are eye-catching and able to attract the audience's attention effectively. Only and only provide the titles.`,
         },
       ],
       model: "gpt-3.5-turbo",
