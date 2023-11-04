@@ -31,12 +31,12 @@ const FormSchema = z.object({
   description: z.string().min(2, {
     message: "Topic must be at least 2 characters.",
   }),
-  stylePrimary: z.string().min(2, {
+  /* stylePrimary: z.string().min(2, {
     message: "Select a style.",
   }),
   styleSecondary: z.string().min(2, {
     message: "Select a style.",
-  }),
+  }), */
 });
 
 export default function Chat() {
@@ -52,8 +52,8 @@ export default function Chat() {
       topic: "",
       keywords: "",
       description: "",
-      stylePrimary: "",
-      styleSecondary: "",
+      /* stylePrimary: "",
+      styleSecondary: "", */
     },
   });
 
@@ -82,7 +82,8 @@ export default function Chat() {
           title: "Uh oh! Something went wrong.",
           description: "There was a problem with your request.",
         });
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   const getTitles = (data: z.infer<typeof FormSchema>) => {
@@ -109,7 +110,8 @@ export default function Chat() {
           title: "Uh oh! Something went wrong.",
           description: "There was a problem with your request.",
         });
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   const getDescription = (data: z.infer<typeof FormSchema>) => {
@@ -136,7 +138,8 @@ export default function Chat() {
           title: "Uh oh! Something went wrong.",
           description: "There was a problem with your request.",
         });
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   const getHashtags = (data: z.infer<typeof FormSchema>) => {
@@ -163,7 +166,8 @@ export default function Chat() {
           title: "Uh oh! Something went wrong.",
           description: "There was a problem with your request.",
         });
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   const onSubmit = (data: z.infer<typeof FormSchema>) => {
@@ -179,7 +183,7 @@ export default function Chat() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col justify-center items-center gap-8 mt-10 px-6 pb-10">
+      <div className="min-h-screen flex flex-col justify-center items-center gap-8 mt-20 px-6 pb-10">
         <Header />
 
         <h1 className="text-left text-4xl font-bold max-w-6xl w-full">

@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `Actua como el mejor de creador y escritor de titulos para videos de youtube, tienes 15 años creadondo videos y titulos atractivos para las personas, utilizas mucho clickbait para atraer muchas personas a tus videos. Dame 5 posibles titulos para videos de youtube. El video trata de ${topic}, utiliza un estilo primario ${stylePrimary}, y con un toque de estilo ${styleSecondary}. Las keywords principales de lo que trata el video es ${keywords}. Una breve descripcion del video es esta ${description}`,
+          content: `Actua como el mejor de creador y escritor de titulos para videos de youtube, tienes 15 años creadondo videos y titulos atractivos para las personas, utilizas mucho clickbait para atraer muchas personas a tus videos. Dame 5 posibles titulos para videos de youtube. El video trata de ${topic}, utiliza un estilo primario es gracioso, y con un toque de estilo epico. Las keywords principales de lo que trata el video es ${keywords}. Una breve descripcion del video es esta ${description}`,
         },
       ],
       model: "gpt-3.5-turbo",

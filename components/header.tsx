@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Logo from "./logo";
 import { ToggleTheme } from "./toggle-theme";
-import { Button } from "./ui/button";
 
 type Props = {};
 
@@ -17,7 +16,7 @@ const Header = (props: Props) => {
             <li>
               <ToggleTheme />
             </li>
-            <li>
+            {/* <li>
               <Button>
                 <a
                   href="https://youtube-ai.ck.page/396aedec66"
@@ -26,7 +25,7 @@ const Header = (props: Props) => {
                   Get Access
                 </a>
               </Button>
-            </li>
+            </li> */}
             {/* <li>
               <Link href={"/"}>Home</Link>
             </li>

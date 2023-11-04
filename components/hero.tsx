@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 export default function Example() {
   return (
     <div className="bg-white dark:bg-transparent">
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="relative flex flex-col justify-center items-center isolate px-6 lg:px-8 h-screen">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true">
@@ -33,17 +34,17 @@ export default function Example() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.2, delay: 0.1 }}>
               <h1 className="text-4xl font-bold tracking-tight  sm:text-6xl bg-gradient-to-r from-orange-300 via-orange-600 to-orange-400 inline-block text-transparent bg-clip-text">
-                Youtube AI
+                We enhance your YouTube videos with AI.
               </h1>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}>
-              <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-                Supercharge your videos with AI-crafted thumbnails, enhancing
-                viewer attraction and boosting video views. Harness the
-                potential of AI-driven visuals for a content strategy upgrade.
+              <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white text-balance">
+                Boost your success on YouTube with high-quality metadata thanks
+                to our artificial intelligence. Save time and effortlessly
+                attract your audience in each video.
               </p>
             </motion.div>
             <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -52,11 +53,7 @@ export default function Example() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2, delay: 0.5 }}>
                 <Button type="button">
-                  <a
-                    target="_blanck"
-                    href={"https://youtube-ai.ck.page/396aedec66"}>
-                    Get Started
-                  </a>
+                  <Link href={"/youtube"}>Get Started</Link>
                 </Button>
               </motion.div>
               {/* <a
